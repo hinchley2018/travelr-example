@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
     try {
 
-        let newdestination = new Destination(destinations.length + 1, req.body.description)
+        let newdestination = new Destination(destinations.length + 1,...req.body)
         destinations.push(newdestination)
         
         res.status(201)
@@ -49,6 +49,7 @@ router.put("/:id", (req, res) => {
             .send(`resource not found with id: ${id}`)
     }
     let destination = destinations[destinationIndex]
+    //TODO: update the destination
     res.send(destination)
 })
 
