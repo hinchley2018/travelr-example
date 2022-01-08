@@ -1,8 +1,8 @@
 const router = require('express').Router()
-const Destination = require('../models/destination')
-let destinations = []
+const destinations = require('../models/destinations')
+
 router.get("/", (req, res) => {
-    res.send(destinations.filter(t => !t.isCompleted))
+    res.send(destinations)
 })
 
 //Get by index
@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
     try {
 
-        let newdestination = new Destination(destinations.length + 1,...req.body)
+        let newdestination = req.body
         destinations.push(newdestination)
         
         res.status(201)
