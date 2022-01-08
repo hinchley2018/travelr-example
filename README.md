@@ -8,3 +8,6 @@
 ## Docs
 - [requirements](requirements.md)
 - [postman collection](travelr.postman_collection.json)
+
+
+## [Example Dataset](destinations.json)
