@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb6c97ba-e4df-44aa-896e-c4e3ae60f27b",
+		"_postman_id": "5970c4a3-6769-4ab8-8446-118574b643f0",
 		"name": "destinations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -70,6 +70,36 @@
 					"path": [
 						"api",
 						"destinations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update destination",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"city\": \"Updated from api\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/destinations/ID_GOES_HERE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"destinations",
+						"ID_GOES_HERE"
 					]
 				}
 			},
