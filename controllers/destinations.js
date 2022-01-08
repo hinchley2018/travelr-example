@@ -39,17 +39,13 @@ router.post("/", (req, res) => {
 //update
 router.put("/:id", (req, res) => {
     let id = Number(req.params.id)
-    if(isNaN(id)){
-        res.status(400)
-            .send("id must be a number")
-    }
     let destinationIndex = destinations.findIndex(t => t.id === id)
     if(destinationIndex === -1){
         res.status(404)
             .send(`resource not found with id: ${id}`)
     }
     let destination = destinations[destinationIndex]
-    //TODO: update the destination
+    destinations[destinationIndex] = req.body;
     res.send(destination)
 })
 
