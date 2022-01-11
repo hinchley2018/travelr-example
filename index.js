@@ -1,6 +1,10 @@
 const express = require("express")
 const bodyParser = require('body-parser')
-require("dotenv").config()
+
+// CONFIGURATION
+require('dotenv').config()
+const PORT = process.env.PORT
+
 const app = express()
 
 app.use(express.static("public"))
@@ -13,6 +17,4 @@ app.get("*", (req, res) => {
     res.send("Page Not Found")
 })
 
-app.listen(8000, () => {
-    console.log("listening on port", 8000)
-})
+app.listen(PORT, () => console.log(`listening on port ${PORT}`))
