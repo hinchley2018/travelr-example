@@ -6,7 +6,7 @@ const destinations = [
         primary_language: "Spanish",
         timezone: "GMT-5",
         currency: "Nuevo Sol",
-        tickets_available: 23
+        
     }, {
         city: "New York",
         country: "United States",
@@ -14,7 +14,7 @@ const destinations = [
         primary_language: "English",
         timezone: "GMT-5",
         currency: "US Dollars",
-        tickets_available: 15
+        
     }, {
         city: "Seoul",
         country: "South Korea",
@@ -22,7 +22,7 @@ const destinations = [
         primary_language: "Korean",
         timezone: "GMT+9",
         currency: "Korean Won",
-        tickets_available: 7
+        
     }, {
         city: "Rome",
         country: "Italy",
@@ -30,7 +30,7 @@ const destinations = [
         primary_language: "Italian",
         timezone: "GMT+1",
         currency: "Euro",
-        tickets_available: 38
+        
     }, {
         city: "Cairo",
         country: "Egypt",
@@ -38,7 +38,7 @@ const destinations = [
         primary_language: "Arabic",
         timezone: "GMT+2",
         currency: "Egyptian Pounds",
-        tickets_available: 29
+        
     }, {
         city: "Sydney",
         country: "Australia",
@@ -46,7 +46,13 @@ const destinations = [
         primary_language: "Arabic",
         timezone: "GMT+11",
         currency: "Australian Dollars",
-        tickets_available: 3
+        
     }
 ]
-module.exports = destinations;
+
+const { Schema } = require("mongoose");
+const {destinationModel} = require("../models/schemas")
+//start with fresh db each time
+destinationModel.deleteMany({})
+
+destinationModel.insertMany(destinations)

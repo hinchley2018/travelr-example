@@ -1,4 +1,5 @@
-const { Schema } = require("mongoose");
+const mongoose = require('mongoose')
+const { Schema} = require("mongoose");
 
 //we added an airport, not every destination may have an airport
 //customers may want to fly to a city then rent a car from there
@@ -11,7 +12,7 @@ let destinationSchema = new Schema({
     timezone: { type: String, required: true },
     currency: { type: String, required: true },
 })
-
+let destinationModel = mongoose.model('destinations', destinationSchema)
 //1:1 relationship with ticket
 let passengerInfoSchema = new Schema({
     first_name: String,
@@ -35,7 +36,8 @@ let ticketSchema = new Schema({
 
 //flight has a one-to-many relationship to tickets which is 
 let flightSchema = new Schema({
-    flight_number:  {type: String, required},
+    //DA-1234
+    flight_number:  {type: String, required:true, unique: true, validate},
     airline: { type: String, required: true },
     departure_time: { type: Date, required: true },
     departure_airport: { type: String, required: true },
@@ -45,5 +47,10 @@ let flightSchema = new Schema({
     flight_duration_in_minutes: { type: Number, required: true },
     tickets : [ticketSchema]
 })
-
+let flightModel = mongoose.model('flights', flightSchema)
 //NOTE: we may separate tickets to its own collection at a later date, depending on the load on our api
+
+module.exports = {
+    destinationModel,
+    flightModel
+}
