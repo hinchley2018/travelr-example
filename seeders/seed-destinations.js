@@ -6,7 +6,7 @@ const destinations = [
         primary_language: "Spanish",
         timezone: "GMT-5",
         currency: "Nuevo Sol",
-        
+
     }, {
         city: "New York",
         country: "United States",
@@ -14,7 +14,7 @@ const destinations = [
         primary_language: "English",
         timezone: "GMT-5",
         currency: "US Dollars",
-        
+
     }, {
         city: "Seoul",
         country: "South Korea",
@@ -22,7 +22,7 @@ const destinations = [
         primary_language: "Korean",
         timezone: "GMT+9",
         currency: "Korean Won",
-        
+
     }, {
         city: "Rome",
         country: "Italy",
@@ -30,7 +30,7 @@ const destinations = [
         primary_language: "Italian",
         timezone: "GMT+1",
         currency: "Euro",
-        
+
     }, {
         city: "Cairo",
         country: "Egypt",
@@ -38,7 +38,7 @@ const destinations = [
         primary_language: "Arabic",
         timezone: "GMT+2",
         currency: "Egyptian Pounds",
-        
+
     }, {
         city: "Sydney",
         country: "Australia",
@@ -46,13 +46,21 @@ const destinations = [
         primary_language: "Arabic",
         timezone: "GMT+11",
         currency: "Australian Dollars",
-        
+
     }
 ]
 
-const { Schema } = require("mongoose");
-const {destinationModel} = require("../models/schemas")
-//start with fresh db each time
-destinationModel.deleteMany({})
+const mongoose = require('mongoose')
+require('dotenv').config()
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log(`connected to MongoDB at ${process.env.MONGO_URI}`)
+})
+const { destinationModel } = require("../models/schemas")
 
-destinationModel.insertMany(destinations)
+async function seedDestinations() {
+    //start with fresh db each time
+    await destinationModel.deleteMany({})
+
+    await destinationModel.insertMany(destinations)
+}
+seedDestinations()
