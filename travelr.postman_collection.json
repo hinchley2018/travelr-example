@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "5970c4a3-6769-4ab8-8446-118574b643f0",
-		"name": "destinations",
+		"_postman_id": "e1cc1249-d6dd-4c34-8eb3-7b55978689f6",
+		"name": "travelr",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -121,6 +121,55 @@
 						"api",
 						"destinations",
 						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get flights",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create flight",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightNumber\": \"DA-1234\",\r\n    \"airline\": \"Delta\",\r\n    \"flight_duration_in_minutes\": 90,\r\n    \"flight_mileage_in_km\": 2000,\r\n    \"arrival_airport\": \"Dulles\",\r\n    \"arrival_time\": \"01/12/2022\",\r\n    \"departure_airport\": \"LaGuardia\",\r\n    \"departure_time\": \"01/12/2022\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/flights",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"flights"
 					]
 				}
 			},

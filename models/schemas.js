@@ -37,7 +37,7 @@ let ticketSchema = new Schema({
 //flight has a one-to-many relationship to tickets which is 
 let flightSchema = new Schema({
     //DA-1234
-    flight_number:  {type: String, required:true, unique: true, validate},
+    flight_number:  {type: String, required:true, unique: true},
     airline: { type: String, required: true },
     departure_time: { type: Date, required: true },
     departure_airport: { type: String, required: true },

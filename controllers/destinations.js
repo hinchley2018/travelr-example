@@ -1,8 +1,10 @@
 const router = require('express').Router()
-const destinations = require('../models/destinations')
+const {destinationModel} = require('../models/schemas')
 
 router.get("/", (req, res) => {
-    res.send(destinations)
+    destinationModel.find({})
+        .then(destinations => res.send(destinations))
+        .catch(err => res.status(500).send(err))
 })
 
 //Get by index
